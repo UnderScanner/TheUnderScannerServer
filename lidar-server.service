@@ -1,0 +1,18 @@
+# /etc/systemd/system/lidar-server.service
+# Pour Activer :
+#sudo systemctl enable lidar-server
+#sudo systemctl start lidar-server
+
+
+[Unit]
+Description=LiDAR Scanner Server
+After=network.target
+
+[Service]
+User=jetson
+WorkingDirectory=/home/jetson
+ExecStart=/usr/bin/python3 /home/jetson/lidar_server.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
